@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({
@@ -18,45 +19,63 @@ class _HomePageState extends State<HomePage> {
   var currentIndex = 0;
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text('My Gym App'),
-      ),
-      body: Builder(builder: (context) {
-        if (currentIndex == 0) {
-          return const ProgressPageContent();
-        }
-        if (currentIndex == 1) {
-          return const AddExercisesPageContent();
-        }
-        return MyAcountPageContent(email: widget.user.email);
-      }),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: currentIndex,
-        onTap: (newIndex) {
-          setState(() {
-            currentIndex = newIndex;
-          });
-        },
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.reviews),
-            label: 'Opinie',
+  Widget build(BuildContext context) => Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            opacity: 0.4,
+            image: AssetImage(
+              'images/login_page_wallpaper.jpg',
+            ),
+            fit: BoxFit.cover,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.add),
-            label: 'Dodaj',
+        ),
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          appBar: AppBar(
+            backgroundColor: Colors.white.withOpacity(0.5),
+            centerTitle: true,
+            title: Text(
+              'My Gym App',
+              style: GoogleFonts.robotoSlab(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: const Color.fromARGB(255, 61, 61, 61),
+              ),
+            ),
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Moje konto',
+          body: Builder(builder: (context) {
+            if (currentIndex == 0) {
+              return const ProgressPageContent();
+            }
+            if (currentIndex == 1) {
+              return const AddExercisesPageContent();
+            }
+            return MyAcountPageContent(email: widget.user.email);
+          }),
+          bottomNavigationBar: BottomNavigationBar(
+            currentIndex: currentIndex,
+            onTap: (newIndex) {
+              setState(() {
+                currentIndex = newIndex;
+              });
+            },
+            items: const [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.reviews),
+                label: 'Opinie',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.add),
+                label: 'Dodaj',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.person),
+                label: 'Moje konto',
+              ),
+            ],
           ),
-        ],
-      ),
-    );
-  }
+        ),
+      );
 }
 
 class MyAcountPageContent extends StatelessWidget {
