@@ -1,9 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_gym_app/app/home/my_account/my_account_page_content.dart';
-import 'package:my_gym_app/app/home/plans/exercises_page_content.dart';
+import 'package:my_gym_app/app/home/plans/plans_page_content.dart';
 import 'package:my_gym_app/app/home/start/start_page_content.dart';
 
 class HomePage extends StatefulWidget {
@@ -51,7 +50,7 @@ class _HomePageState extends State<HomePage> {
               return const StartPageContent();
             }
             if (currentIndex == 1) {
-              return const ExercisesPageContent();
+              return const PlansPageContent();
             }
             return MyAcountPageContent(email: widget.user.email);
           }),
