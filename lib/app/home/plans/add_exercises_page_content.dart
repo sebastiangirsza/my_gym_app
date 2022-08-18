@@ -13,7 +13,7 @@ class AddExercisesPageContent extends StatefulWidget {
 }
 
 class _AddExercisesPageContentState extends State<AddExercisesPageContent> {
-  var partName = '';
+  var partName = 'Plecy';
   var exercisesName = '';
 
   @override
@@ -50,25 +50,51 @@ class _AddExercisesPageContentState extends State<AddExercisesPageContent> {
                 color: Colors.white.withOpacity(0.6)),
             child: Column(
               children: [
-                TextField(
-                  decoration: const InputDecoration(
-                    hintText: 'Podaj nazwę ćwiczenia',
+                const SizedBox(height: 25),
+                const Text('Wybierz partię'),
+                DropdownButton<String>(
+                  value: partName,
+                  icon: const Icon(Icons.arrow_downward),
+                  elevation: 16,
+                  style: const TextStyle(color: Colors.black),
+                  underline: Container(
+                    height: 2,
+                    color: Colors.black,
                   ),
-                  onChanged: (newPart) {
+                  onChanged: (String? newPart) {
                     setState(() {
-                      partName = newPart;
+                      partName = newPart!;
                     });
                   },
+                  items: <String>[
+                    'Plecy',
+                    'Klatka piersiowa',
+                    'Biceps',
+                    'Triceps',
+                    'Barki',
+                    'Nogi',
+                    'Brzuch',
+                  ].map<DropdownMenuItem<String>>((String partName) {
+                    return DropdownMenuItem<String>(
+                      value: partName,
+                      child: Text(partName),
+                    );
+                  }).toList(),
                 ),
-                TextField(
-                  decoration: const InputDecoration(
-                    hintText: 'Podaj nazwę ćwiczenia',
+                const SizedBox(height: 25),
+                const Text('Podaj nazwę ćwiczenia'),
+                Padding(
+                  padding: const EdgeInsets.only(left: 25.0, right: 25),
+                  child: TextField(
+                    decoration: const InputDecoration(
+                      hintText: 'Podaj nazwę ćwiczenia',
+                    ),
+                    onChanged: (newExercises) {
+                      setState(() {
+                        exercisesName = newExercises;
+                      });
+                    },
                   ),
-                  onChanged: (newExercises) {
-                    setState(() {
-                      exercisesName = newExercises;
-                    });
-                  },
                 ),
                 ElevatedButton(
                   onPressed: partName.isEmpty || exercisesName.isEmpty

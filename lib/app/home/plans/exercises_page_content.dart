@@ -21,13 +21,21 @@ class _ExercisesPageContentState extends State<ExercisesPageContent> {
           if (snapshot.hasError) {
             return const Center(
                 child: Text(
-                    style: TextStyle(fontSize: 15, color: Colors.black),
+                    style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.black,
+                        decoration: TextDecoration.underline,
+                        decorationColor: Colors.black),
                     'Coś poszło nie tak'));
           }
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(
                 child: Text(
-                    style: TextStyle(fontSize: 15, color: Colors.black),
+                    style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.black,
+                        decoration: TextDecoration.underline,
+                        decorationColor: Colors.black),
                     'Trwa ładowanie'));
           }
 
