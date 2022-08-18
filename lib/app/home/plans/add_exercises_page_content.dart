@@ -14,6 +14,7 @@ class AddExercisesPageContent extends StatefulWidget {
 
 class _AddExercisesPageContentState extends State<AddExercisesPageContent> {
   var partName = '';
+  var exercisesName = '';
 
   @override
   Widget build(BuildContext context) {
@@ -59,12 +60,23 @@ class _AddExercisesPageContentState extends State<AddExercisesPageContent> {
                     });
                   },
                 ),
+                TextField(
+                  decoration: const InputDecoration(
+                    hintText: 'Podaj nazwę ćwiczenia',
+                  ),
+                  onChanged: (newExercises) {
+                    setState(() {
+                      exercisesName = newExercises;
+                    });
+                  },
+                ),
                 ElevatedButton(
-                  onPressed: partName.isEmpty
+                  onPressed: partName.isEmpty || exercisesName.isEmpty
                       ? null
                       : () {
                           FirebaseFirestore.instance.collection('gym').add({
                             'body_part': partName,
+                            'exercises': exercisesName,
                           });
                           Navigator.pop(context);
                         },
