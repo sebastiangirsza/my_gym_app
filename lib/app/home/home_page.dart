@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_gym_app/app/home/my_account/my_account_page_content.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({
@@ -32,7 +33,7 @@ class _HomePageState extends State<HomePage> {
         child: Scaffold(
           backgroundColor: Colors.transparent,
           appBar: AppBar(
-            backgroundColor: Colors.white.withOpacity(0.5),
+            backgroundColor: Colors.white.withOpacity(0.6),
             centerTitle: true,
             title: Text(
               'My Gym App',
@@ -53,6 +54,9 @@ class _HomePageState extends State<HomePage> {
             return MyAcountPageContent(email: widget.user.email);
           }),
           bottomNavigationBar: BottomNavigationBar(
+            fixedColor: Colors.black,
+            selectedFontSize: 15,
+            unselectedFontSize: 12,
             currentIndex: currentIndex,
             onTap: (newIndex) {
               setState(() {
@@ -76,34 +80,6 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       );
-}
-
-class MyAcountPageContent extends StatelessWidget {
-  const MyAcountPageContent({
-    Key? key,
-    required this.email,
-  }) : super(key: key);
-
-  final String? email;
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text('Jestes zalogowany jako $email'),
-          const SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: () {
-              FirebaseAuth.instance.signOut();
-            },
-            child: const Text('Wyloguj'),
-          ),
-        ],
-      ),
-    );
-  }
 }
 
 class AddExercisesPageContent extends StatelessWidget {
@@ -146,13 +122,11 @@ class ProgressPageContent extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(document['day']),
                       Text(document['body_part']),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(document['exercises']),
-                          Text(document['number_of_series'].toString()),
                         ],
                       ),
                     ],

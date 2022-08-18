@@ -22,12 +22,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.grey,
-        textTheme: const TextTheme(
-          headline1: TextStyle(color: Colors.white),
-          headline2: TextStyle(color: Colors.deepPurpleAccent),
-          bodyText2: TextStyle(color: Colors.grey),
-          subtitle1: TextStyle(color: Colors.pinkAccent),
-        ),
+        canvasColor: Colors.white.withOpacity(0.6),
       ),
       home: const RootPage(),
     );
