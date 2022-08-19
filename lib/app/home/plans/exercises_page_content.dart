@@ -56,6 +56,12 @@ class _ExercisesPageContentState extends State<ExercisesPageContent> {
               appBar: AppBar(
                 backgroundColor: Colors.white.withOpacity(0.6),
                 centerTitle: true,
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(40),
+                    bottomRight: Radius.circular(40),
+                  ),
+                ),
                 title: Text(
                   'My Gym App',
                   style: GoogleFonts.robotoSlab(
@@ -68,7 +74,8 @@ class _ExercisesPageContentState extends State<ExercisesPageContent> {
               body: ListView(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(10.0),
+                    padding: const EdgeInsets.only(
+                        top: 10.0, bottom: 10.0, left: 25, right: 25),
                     child: Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
@@ -96,7 +103,8 @@ class _ExercisesPageContentState extends State<ExercisesPageContent> {
                   ),
                   for (final document in documents) ...[
                     Padding(
-                      padding: const EdgeInsets.all(10.0),
+                      padding: const EdgeInsets.only(
+                          top: 10.0, bottom: 10.0, left: 25, right: 25),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [

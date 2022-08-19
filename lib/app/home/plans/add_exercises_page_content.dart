@@ -33,6 +33,12 @@ class _AddExercisesPageContentState extends State<AddExercisesPageContent> {
         appBar: AppBar(
           backgroundColor: Colors.white.withOpacity(0.6),
           centerTitle: true,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(40),
+              bottomRight: Radius.circular(40),
+            ),
+          ),
           title: Text(
             'My Gym App',
             style: GoogleFonts.robotoSlab(

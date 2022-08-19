@@ -36,6 +36,12 @@ class _HomePageState extends State<HomePage> {
           appBar: AppBar(
             backgroundColor: Colors.white.withOpacity(0.6),
             centerTitle: true,
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(40),
+                bottomRight: Radius.circular(40),
+              ),
+            ),
             title: Text(
               'My Gym App',
               style: GoogleFonts.robotoSlab(
@@ -50,7 +56,7 @@ class _HomePageState extends State<HomePage> {
               return const StartPageContent();
             }
             if (currentIndex == 1) {
-              return const PlansPageContent();
+              return PlansPageContent();
             }
             return MyAcountPageContent(email: widget.user.email);
           }),
@@ -66,11 +72,11 @@ class _HomePageState extends State<HomePage> {
             },
             items: const [
               BottomNavigationBarItem(
-                icon: Icon(Icons.reviews),
+                icon: Icon(Icons.home),
                 label: 'Start',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.add),
+                icon: Icon(Icons.fitness_center),
                 label: 'Plany',
               ),
               BottomNavigationBarItem(
