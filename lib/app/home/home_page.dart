@@ -45,6 +45,13 @@ class _HomePageState extends State<HomePage> {
             title: Text(
               'My Gym App',
               style: GoogleFonts.robotoSlab(
+                shadows: const <Shadow>[
+                  Shadow(
+                    offset: Offset(2, 2),
+                    blurRadius: 20.0,
+                    color: Colors.white,
+                  ),
+                ],
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
                 color: const Color.fromARGB(255, 61, 61, 61),
@@ -60,30 +67,42 @@ class _HomePageState extends State<HomePage> {
             }
             return MyAcountPageContent(email: widget.user.email);
           }),
-          bottomNavigationBar: BottomNavigationBar(
-            fixedColor: Colors.white,
-            selectedFontSize: 15,
-            unselectedFontSize: 12,
-            currentIndex: currentIndex,
-            onTap: (newIndex) {
-              setState(() {
-                currentIndex = newIndex;
-              });
-            },
-            items: const [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: 'Start',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.fitness_center),
-                label: 'Plany',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.person),
-                label: 'Moje konto',
-              ),
-            ],
+          bottomNavigationBar: Container(
+            decoration: const BoxDecoration(
+              boxShadow: <BoxShadow>[
+                BoxShadow(
+                  color: Colors.white,
+                  blurRadius: 50,
+                ),
+              ],
+            ),
+            child: BottomNavigationBar(
+              backgroundColor: Colors.black.withOpacity(0.9),
+              fixedColor: Colors.white,
+              selectedFontSize: 15,
+              unselectedFontSize: 11,
+              unselectedItemColor: Colors.white.withOpacity(0.5),
+              currentIndex: currentIndex,
+              onTap: (newIndex) {
+                setState(() {
+                  currentIndex = newIndex;
+                });
+              },
+              items: const [
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.home),
+                  label: 'Start',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.fitness_center),
+                  label: 'Plany',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.person),
+                  label: 'Moje konto',
+                ),
+              ],
+            ),
           ),
         ),
       );

@@ -65,6 +65,13 @@ class _ExercisesPageContentState extends State<ExercisesPageContent> {
                 title: Text(
                   'My Gym App',
                   style: GoogleFonts.robotoSlab(
+                    shadows: const <Shadow>[
+                      Shadow(
+                        offset: Offset(2, 2),
+                        blurRadius: 20.0,
+                        color: Colors.white,
+                      ),
+                    ],
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                     color: const Color.fromARGB(255, 61, 61, 61),
