@@ -34,6 +34,8 @@ class _HomePageState extends State<HomePage> {
         child: Scaffold(
           backgroundColor: Colors.transparent,
           appBar: AppBar(
+            shadowColor: Colors.white,
+            elevation: 10,
             backgroundColor: Colors.white.withOpacity(0.6),
             centerTitle: true,
             shape: const RoundedRectangleBorder(
@@ -48,13 +50,13 @@ class _HomePageState extends State<HomePage> {
                 shadows: const <Shadow>[
                   Shadow(
                     offset: Offset(2, 2),
-                    blurRadius: 20.0,
+                    blurRadius: 8.0,
                     color: Colors.white,
                   ),
                 ],
-                fontSize: 20,
+                fontSize: 25,
                 fontWeight: FontWeight.bold,
-                color: const Color.fromARGB(255, 61, 61, 61),
+                color: Color.fromARGB(255, 0, 0, 0),
               ),
             ),
           ),

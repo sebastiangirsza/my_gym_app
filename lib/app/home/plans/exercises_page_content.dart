@@ -54,6 +54,8 @@ class _ExercisesPageContentState extends State<ExercisesPageContent> {
             child: Scaffold(
               backgroundColor: Colors.transparent,
               appBar: AppBar(
+                shadowColor: Colors.white,
+                elevation: 10,
                 backgroundColor: Colors.white.withOpacity(0.6),
                 centerTitle: true,
                 shape: const RoundedRectangleBorder(
@@ -68,13 +70,13 @@ class _ExercisesPageContentState extends State<ExercisesPageContent> {
                     shadows: const <Shadow>[
                       Shadow(
                         offset: Offset(2, 2),
-                        blurRadius: 20.0,
+                        blurRadius: 8.0,
                         color: Colors.white,
                       ),
                     ],
-                    fontSize: 20,
+                    fontSize: 25,
                     fontWeight: FontWeight.bold,
-                    color: const Color.fromARGB(255, 61, 61, 61),
+                    color: Color.fromARGB(255, 0, 0, 0),
                   ),
                 ),
               ),
@@ -82,7 +84,7 @@ class _ExercisesPageContentState extends State<ExercisesPageContent> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(
-                        top: 10.0, bottom: 10.0, left: 25, right: 25),
+                        top: 20.0, bottom: 10.0, left: 25, right: 25),
                     child: Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
