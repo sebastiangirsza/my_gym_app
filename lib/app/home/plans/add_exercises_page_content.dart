@@ -21,7 +21,7 @@ class _AddExercisesPageContentState extends State<AddExercisesPageContent> {
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
-          opacity: 0.3,
+          opacity: 0.35,
           image: AssetImage(
             'images/login_page_wallpaper.jpg',
           ),
@@ -53,77 +53,157 @@ class _AddExercisesPageContentState extends State<AddExercisesPageContent> {
               ],
               fontSize: 25,
               fontWeight: FontWeight.bold,
-              color: Color.fromARGB(255, 0, 0, 0),
+              color: const Color.fromARGB(255, 0, 0, 0),
             ),
           ),
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Container(
-            decoration: BoxDecoration(
+        body: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Container(
+              height: 280,
+              decoration: BoxDecoration(
+                boxShadow: const <BoxShadow>[
+                  BoxShadow(
+                    color: Color.fromARGB(255, 0, 0, 0),
+                    blurRadius: 15,
+                  ),
+                ],
                 borderRadius: BorderRadius.circular(15),
-                color: Colors.white.withOpacity(0.6)),
-            child: Column(
-              children: [
-                const SizedBox(height: 25),
-                const Text('Wybierz partię'),
-                DropdownButton<String>(
-                  value: partName,
-                  icon: const Icon(Icons.arrow_downward),
-                  elevation: 16,
-                  style: const TextStyle(color: Colors.black),
-                  underline: Container(
-                    height: 2,
-                    color: Colors.black,
+                image: const DecorationImage(
+                  opacity: 0.6,
+                  image: AssetImage(
+                    'images/addexercises.jpg',
                   ),
-                  onChanged: (String? newPart) {
-                    setState(() {
-                      partName = newPart!;
-                    });
-                  },
-                  items: <String>[
-                    'Plecy',
-                    'Klatka piersiowa',
-                    'Biceps',
-                    'Triceps',
-                    'Barki',
-                    'Nogi',
-                    'Brzuch',
-                  ].map<DropdownMenuItem<String>>((String partName) {
-                    return DropdownMenuItem<String>(
-                      value: partName,
-                      child: Text(partName),
-                    );
-                  }).toList(),
+                  fit: BoxFit.cover,
                 ),
-                const SizedBox(height: 25),
-                const Text('Podaj nazwę ćwiczenia'),
-                Padding(
-                  padding: const EdgeInsets.only(left: 25.0, right: 25),
-                  child: TextField(
-                    decoration: const InputDecoration(
-                      hintText: 'Podaj nazwę ćwiczenia',
-                    ),
-                    onChanged: (newExercises) {
-                      setState(() {
-                        exercisesName = newExercises;
-                      });
-                    },
-                  ),
-                ),
-                ElevatedButton(
-                  onPressed: partName.isEmpty || exercisesName.isEmpty
-                      ? null
-                      : () {
-                          FirebaseFirestore.instance.collection('gym').add({
-                            'body_part': partName,
-                            'exercises': exercisesName,
+              ),
+              child: ListView(
+                children: [
+                  Column(
+                    children: [
+                      const SizedBox(height: 25),
+                      Text(
+                        'Wybierz partię',
+                        style: GoogleFonts.robotoSlab(
+                          shadows: const <Shadow>[
+                            Shadow(
+                              offset: Offset(2, 2),
+                              blurRadius: 8.0,
+                              color: Colors.black,
+                            ),
+                          ],
+                          fontSize: 23,
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromARGB(255, 255, 255, 255),
+                        ),
+                      ),
+                      DropdownButton<String>(
+                        value: partName,
+                        icon: const Icon(
+                          Icons.arrow_downward,
+                          color: Colors.black,
+                        ),
+                        elevation: 0,
+                        dropdownColor: Colors.white.withOpacity(0.9),
+                        borderRadius: BorderRadius.circular(15),
+                        style: const TextStyle(color: Colors.black),
+                        underline: Container(
+                          height: 1,
+                          color: Colors.black,
+                        ),
+                        onChanged: (String? newPart) {
+                          setState(() {
+                            partName = newPart!;
                           });
-                          Navigator.pop(context);
                         },
-                  child: const Text('Dodaj'),
-                ),
-              ],
+                        items: <String>[
+                          'Plecy',
+                          'Klatka piersiowa',
+                          'Biceps',
+                          'Triceps',
+                          'Barki',
+                          'Nogi',
+                          'Brzuch',
+                        ].map<DropdownMenuItem<String>>((String partName) {
+                          return DropdownMenuItem<String>(
+                            value: partName,
+                            child: Center(
+                                child: Text(
+                              partName,
+                              style: GoogleFonts.robotoSlab(
+                                shadows: const <Shadow>[
+                                  Shadow(
+                                    offset: Offset(2, 2),
+                                    blurRadius: 8.0,
+                                    color: Colors.black,
+                                  ),
+                                ],
+                                fontSize: 18,
+                                color: Color.fromARGB(255, 255, 255, 255),
+                              ),
+                            )),
+                          );
+                        }).toList(),
+                      ),
+                      const SizedBox(height: 25),
+                      Text(
+                        'Podaj nazwę ćwiczenia',
+                        style: GoogleFonts.robotoSlab(
+                          shadows: const <Shadow>[
+                            Shadow(
+                              offset: Offset(2, 2),
+                              blurRadius: 8.0,
+                              color: Colors.black,
+                            ),
+                          ],
+                          fontSize: 23,
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromARGB(255, 255, 255, 255),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 25.0, right: 25),
+                        child: TextField(
+                          style: GoogleFonts.robotoSlab(
+                            shadows: const <Shadow>[
+                              Shadow(
+                                offset: Offset(2, 2),
+                                blurRadius: 8.0,
+                                color: Colors.black,
+                              ),
+                            ],
+                            fontSize: 18,
+                            color: Color.fromARGB(255, 255, 255, 255),
+                          ),
+                          decoration: const InputDecoration(
+                            hintText: '',
+                          ),
+                          onChanged: (newExercises) {
+                            setState(() {
+                              exercisesName = newExercises;
+                            });
+                          },
+                        ),
+                      ),
+                      ElevatedButton(
+                        onPressed: partName.isEmpty || exercisesName.isEmpty
+                            ? null
+                            : () {
+                                FirebaseFirestore.instance
+                                    .collection('gym')
+                                    .add({
+                                  'body_part': partName,
+                                  'exercises': exercisesName,
+                                });
+                                Navigator.pop(context);
+                              },
+                        child: const Text('Dodaj'),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),
