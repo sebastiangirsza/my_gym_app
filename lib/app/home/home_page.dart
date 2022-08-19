@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) => Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            opacity: 0.4,
+            opacity: 0.3,
             image: AssetImage(
               'images/login_page_wallpaper.jpg',
             ),
@@ -56,12 +56,12 @@ class _HomePageState extends State<HomePage> {
               return const StartPageContent();
             }
             if (currentIndex == 1) {
-              return PlansPageContent();
+              return const PlansPageContent();
             }
             return MyAcountPageContent(email: widget.user.email);
           }),
           bottomNavigationBar: BottomNavigationBar(
-            fixedColor: Colors.black,
+            fixedColor: Colors.white,
             selectedFontSize: 15,
             unselectedFontSize: 12,
             currentIndex: currentIndex,

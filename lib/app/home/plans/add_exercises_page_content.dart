@@ -21,7 +21,7 @@ class _AddExercisesPageContentState extends State<AddExercisesPageContent> {
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
-          opacity: 0.4,
+          opacity: 0.3,
           image: AssetImage(
             'images/login_page_wallpaper.jpg',
           ),
