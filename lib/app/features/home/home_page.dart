@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:my_gym_app/app/home/my_account/my_account_page_content.dart';
-import 'package:my_gym_app/app/home/plans/plans_page_content.dart';
-import 'package:my_gym_app/app/home/start/start_page_content.dart';
+import 'package:my_gym_app/app/features/home/my_account/my_account_page_content.dart';
+import 'package:my_gym_app/app/features/home/plans/plans_page_content.dart';
+import 'package:my_gym_app/app/features/home/start/start_page_content.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:my_gym_app/app/home/plans/exercises_page_content.dart';
+import 'package:my_gym_app/app/features/home/plans/exercises_page_content.dart';
 
 class PlansPageContent extends StatefulWidget {
   const PlansPageContent({
