@@ -29,14 +29,7 @@ class _ExercisesPageContentState extends State<ExercisesPageContent> {
                     'Coś poszło nie tak'));
           }
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(
-                child: Text(
-                    style: TextStyle(
-                        fontSize: 15,
-                        color: Colors.black,
-                        decoration: TextDecoration.underline,
-                        decorationColor: Colors.black),
-                    'Trwa ładowanie'));
+            return const Center(child: CircularProgressIndicator());
           }
 
           final documents = snapshot.data!.docs;
