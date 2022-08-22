@@ -16,6 +16,10 @@ class ExercisesCubit extends Cubit<ExercisesState> {
           ),
         );
 
+  Future<void> delete({required String document}) async {
+    await FirebaseFirestore.instance.collection('gym').doc(document).delete();
+  }
+
   StreamSubscription? _streamSubscription;
 
   Future<void> start() async {
