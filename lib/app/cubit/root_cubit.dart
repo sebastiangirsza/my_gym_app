@@ -15,6 +15,15 @@ class RootCubit extends Cubit<RootState> {
             isLoading: false,
           ),
         );
+  Future<void> logIn({required String email, required String password}) async {
+    await FirebaseAuth.instance
+        .createUserWithEmailAndPassword(email: email, password: password);
+  }
+
+  Future<void> signIn({required String email, required String password}) async {
+    await FirebaseAuth.instance
+        .signInWithEmailAndPassword(email: email, password: password);
+  }
 
   StreamSubscription? _streamSubscription;
 
