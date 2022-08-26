@@ -3,13 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_gym_app/app/features/home/plans/add_exercises/add_exercises_page_content.dart';
 import 'package:my_gym_app/app/features/home/plans/body_parts/cubit/exercises_cubit.dart';
-import 'package:my_gym_app/app/features/home/plans/body_parts/exercises/body_part_back_page_content%20copy%202.dart';
-import 'package:my_gym_app/app/features/home/plans/body_parts/exercises/body_part_back_page_content%20copy%203.dart';
-import 'package:my_gym_app/app/features/home/plans/body_parts/exercises/body_part_back_page_content%20copy%204.dart';
-import 'package:my_gym_app/app/features/home/plans/body_parts/exercises/body_part_back_page_content%20copy%205.dart';
-import 'package:my_gym_app/app/features/home/plans/body_parts/exercises/body_part_back_page_content%20copy%206.dart';
-import 'package:my_gym_app/app/features/home/plans/body_parts/exercises/body_part_back_page_content%20copy.dart';
-import 'package:my_gym_app/app/features/home/plans/body_parts/exercises/body_part_back_page_content.dart';
+import 'package:my_gym_app/app/features/home/plans/body_parts/exercises/body_part_page_content.dart';
 
 class ExercisesPageContent extends StatelessWidget {
   const ExercisesPageContent({
@@ -103,13 +97,27 @@ Widget _myListView(BuildContext context) {
   ];
   final routes = [
     const AddExercisesPageContent(),
-    const BodyPartBackPageContent(),
-    const BodyPartChestPageContent(),
-    const BodyPartBicepsPageContent(),
-    const BodyPartTricepsPageContent(),
-    const BodyPartSchouldersPageContent(),
-    const BodyPartLegsPageContent(),
-    const BodyPartStomachPageContent(),
+    const BodyPartPageContent(
+      bodyParts: 'Plecy',
+    ),
+    const BodyPartPageContent(
+      bodyParts: 'Klatka piersiowa',
+    ),
+    const BodyPartPageContent(
+      bodyParts: 'Biceps',
+    ),
+    const BodyPartPageContent(
+      bodyParts: 'Triceps',
+    ),
+    const BodyPartPageContent(
+      bodyParts: 'Barki',
+    ),
+    const BodyPartPageContent(
+      bodyParts: 'Nogi',
+    ),
+    const BodyPartPageContent(
+      bodyParts: 'Brzuch',
+    ),
   ];
 
   return ListView.builder(

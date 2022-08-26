@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:my_gym_app/app/features/home/plans/body_parts/exercises/body_part_back_page_content.dart';
+import 'package:my_gym_app/app/features/home/plans/body_parts/exercises/body_part_page_content.dart';
 import 'package:my_gym_app/app/features/home/plans/body_parts/exercises_page_content.dart';
 
 class PlansPageContent extends StatelessWidget {
@@ -29,7 +29,7 @@ Widget _myListView(BuildContext context) {
 
   final routes = [
     const ExercisesPageContent(),
-    const BodyPartBackPageContent(),
+    const ExercisesPageContent(),
     const ExercisesPageContent(),
   ];
   return ListView.builder(
