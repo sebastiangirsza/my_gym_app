@@ -4,17 +4,18 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:my_gym_app/app/features/home/plans/add_exercises/add_exercises_page_content.dart';
 import 'package:my_gym_app/app/features/home/plans/body_parts/cubit/exercises_cubit.dart';
 
-class BodyPartBackPageContent extends StatefulWidget {
-  const BodyPartBackPageContent({
+class BodyPartStomachPageContent extends StatefulWidget {
+  const BodyPartStomachPageContent({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<BodyPartBackPageContent> createState() =>
-      _BodyPartBackPageContentState();
+  State<BodyPartStomachPageContent> createState() =>
+      _BodyPartStomachPageContentState();
 }
 
-class _BodyPartBackPageContentState extends State<BodyPartBackPageContent> {
+class _BodyPartStomachPageContentState
+    extends State<BodyPartStomachPageContent> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -65,42 +66,14 @@ class _BodyPartBackPageContentState extends State<BodyPartBackPageContent> {
                     ],
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 0, 0, 0),
+                    color: const Color.fromARGB(255, 0, 0, 0),
                   ),
                 ),
               ),
               body: ListView(
                 children: [
-                  // Padding(
-                  //   padding: const EdgeInsets.only(
-                  //       top: 20.0, bottom: 10.0, left: 25, right: 25),
-                  //   child: Container(
-                  //       decoration: BoxDecoration(
-                  //         borderRadius: BorderRadius.circular(15),
-                  //         color: Colors.white.withOpacity(0.9),
-                  //       ),
-                  //       child: Padding(
-                  //         padding: const EdgeInsets.all(10.0),
-                  //         child: Row(
-                  //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  //           children: [
-                  //             const Text('Dodaj ćwiczenie'),
-                  //             ElevatedButton(
-                  //                 onPressed: () {
-                  //                   Navigator.of(context).push(
-                  //                     MaterialPageRoute(
-                  //                       builder: (_) =>
-                  //                           const AddExercisesPageContent(),
-                  //                     ),
-                  //                   );
-                  //                 },
-                  //                 child: const Icon(Icons.add))
-                  //           ],
-                  //         ),
-                  //       )),
-                  // ),
                   for (final document in documents) ...[
-                    if (document['body_part'] == 'Plecy') ...[
+                    if (document['body_part'] == 'Brzuch') ...[
                       Padding(
                         padding: const EdgeInsets.only(
                             top: 10.0, bottom: 10.0, left: 25, right: 25),

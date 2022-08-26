@@ -3,17 +3,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_gym_app/app/features/home/plans/add_exercises/add_exercises_page_content.dart';
 import 'package:my_gym_app/app/features/home/plans/body_parts/cubit/exercises_cubit.dart';
+import 'package:my_gym_app/app/features/home/plans/body_parts/exercises/body_part_back_page_content%20copy%202.dart';
+import 'package:my_gym_app/app/features/home/plans/body_parts/exercises/body_part_back_page_content%20copy%203.dart';
+import 'package:my_gym_app/app/features/home/plans/body_parts/exercises/body_part_back_page_content%20copy%204.dart';
+import 'package:my_gym_app/app/features/home/plans/body_parts/exercises/body_part_back_page_content%20copy%205.dart';
+import 'package:my_gym_app/app/features/home/plans/body_parts/exercises/body_part_back_page_content%20copy%206.dart';
+import 'package:my_gym_app/app/features/home/plans/body_parts/exercises/body_part_back_page_content%20copy.dart';
+import 'package:my_gym_app/app/features/home/plans/body_parts/exercises/body_part_back_page_content.dart';
 
-class ExercisesPageContent extends StatefulWidget {
+class ExercisesPageContent extends StatelessWidget {
   const ExercisesPageContent({
     Key? key,
   }) : super(key: key);
 
-  @override
-  State<ExercisesPageContent> createState() => _ExercisesPageContentState();
-}
-
-class _ExercisesPageContentState extends State<ExercisesPageContent> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -64,75 +66,92 @@ class _ExercisesPageContentState extends State<ExercisesPageContent> {
                     ],
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 0, 0, 0),
+                    color: const Color.fromARGB(255, 0, 0, 0),
                   ),
                 ),
               ),
-              body: ListView(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        top: 20.0, bottom: 10.0, left: 25, right: 25),
-                    child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          color: Colors.white.withOpacity(0.9),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              const Text('Dodaj ćwiczenie'),
-                              ElevatedButton(
-                                  onPressed: () {
-                                    Navigator.of(context).push(
-                                      MaterialPageRoute(
-                                        builder: (_) =>
-                                            const AddExercisesPageContent(),
-                                      ),
-                                    );
-                                  },
-                                  child: const Icon(Icons.add))
-                            ],
-                          ),
-                        )),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        top: 10.0, bottom: 10.0, left: 25, right: 25),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            color: Colors.white.withOpacity(0.6),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: const [
-                                    Text('Plecy'),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+              body: const BodyPartsList(),
             ),
           );
         },
       ),
     );
   }
+}
+
+class BodyPartsList extends StatelessWidget {
+  const BodyPartsList({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return _myListView(context);
+  }
+}
+
+Widget _myListView(BuildContext context) {
+  final bodyParts = [
+    'Dodaj ćwiczenie',
+    'Plecy',
+    'Klatka piersiowa',
+    'Biceps',
+    'Triceps',
+    'Barki',
+    'Nogi',
+    'Brzuch',
+  ];
+  final routes = [
+    const AddExercisesPageContent(),
+    const BodyPartBackPageContent(),
+    const BodyPartChestPageContent(),
+    const BodyPartBicepsPageContent(),
+    const BodyPartTricepsPageContent(),
+    const BodyPartSchouldersPageContent(),
+    const BodyPartLegsPageContent(),
+    const BodyPartStomachPageContent(),
+  ];
+
+  return ListView.builder(
+      itemCount: bodyParts.length,
+      itemBuilder: (context, index) {
+        return Padding(
+          padding: const EdgeInsets.only(
+              top: 10.0, bottom: 10.0, left: 25, right: 25),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: Colors.white.withOpacity(0.6),
+                ),
+                child: InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => (routes[index]),
+                      ),
+                    );
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(bodyParts[index]),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      });
 }
