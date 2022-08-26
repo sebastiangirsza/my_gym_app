@@ -2,18 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_gym_app/app/features/home/plans/add_exercises/add_exercises_page_content.dart';
-import 'package:my_gym_app/app/features/home/plans/exercises/cubit/exercises_cubit.dart';
+import 'package:my_gym_app/app/features/home/plans/body_parts/cubit/exercises_cubit.dart';
 
-class ExercisesPageContent extends StatefulWidget {
-  const ExercisesPageContent({
+class BodyPartBackPageContent extends StatefulWidget {
+  const BodyPartBackPageContent({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<ExercisesPageContent> createState() => _ExercisesPageContentState();
+  State<BodyPartBackPageContent> createState() =>
+      _BodyPartBackPageContentState();
 }
 
-class _ExercisesPageContentState extends State<ExercisesPageContent> {
+class _BodyPartBackPageContentState extends State<BodyPartBackPageContent> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -99,48 +100,46 @@ class _ExercisesPageContentState extends State<ExercisesPageContent> {
                         )),
                   ),
                   for (final document in documents) ...[
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          top: 10.0, bottom: 10.0, left: 25, right: 25),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
-                              color: Colors.white.withOpacity(0.6),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(document['body_part']),
-                                      const SizedBox(
-                                        height: 5,
-                                      ),
-                                      Text(document['exercises']),
-                                    ],
-                                  ),
-                                  ElevatedButton(
-                                      onPressed: () {
-                                        context
-                                            .read<ExercisesCubit>()
-                                            .delete(document: document.id);
-                                      },
-                                      child: const Icon(Icons.delete))
-                                ],
+                    if (document['body_part'] == 'Plecy') ...[
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            top: 10.0, bottom: 10.0, left: 25, right: 25),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
+                                color: Colors.white.withOpacity(0.6),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(document['exercises']),
+                                      ],
+                                    ),
+                                    ElevatedButton(
+                                        onPressed: () {
+                                          context
+                                              .read<ExercisesCubit>()
+                                              .delete(document: document.id);
+                                        },
+                                        child: const Icon(Icons.delete))
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
+                    ],
                   ],
                 ],
               ),

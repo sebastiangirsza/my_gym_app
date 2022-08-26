@@ -1,225 +1,95 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:my_gym_app/app/features/home/plans/exercises/exercises_page_content.dart';
+import 'package:my_gym_app/app/features/home/plans/body_parts/exercises/body_part_back_page_content.dart';
+import 'package:my_gym_app/app/features/home/plans/body_parts/exercises_page_content.dart';
 
-class PlansPageContent extends StatefulWidget {
+class PlansPageContent extends StatelessWidget {
   const PlansPageContent({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<PlansPageContent> createState() => _PlansPageContentState();
-}
-
-class _PlansPageContentState extends State<PlansPageContent> {
-  @override
   Widget build(BuildContext context) {
-    return Center(
-      child: ListView(
-        children: const [
-          TitlePlans(),
-          TitleNewPlan(),
-          TitleExercises(),
-        ],
-      ),
-    );
+    return _myListView(context);
   }
 }
 
-class TitleExercises extends StatelessWidget {
-  const TitleExercises({
-    Key? key,
-  }) : super(key: key);
+Widget _myListView(BuildContext context) {
+  final result = [
+    'Ćwiczenia',
+    'Twoje plany',
+    'Utwórz nowy plan',
+  ];
 
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding:
-          const EdgeInsets.only(top: 20.0, bottom: 10.0, left: 25, right: 25),
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: Colors.white,
-        ),
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-            image: const DecorationImage(
-              opacity: 0.9,
-              image: AssetImage(
-                'images/exercises.jpg',
-              ),
-              fit: BoxFit.cover,
+  final image = [
+    'images/exercises.jpg',
+    'images/plans.jpeg',
+    'images/newplan.jpg',
+  ];
+
+  final routes = [
+    const ExercisesPageContent(),
+    const BodyPartBackPageContent(),
+    const ExercisesPageContent(),
+  ];
+  return ListView.builder(
+      itemCount: result.length,
+      itemBuilder: (context, index) {
+        return Padding(
+          padding: const EdgeInsets.only(
+              top: 20.0, bottom: 10.0, left: 25, right: 25),
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+              color: Colors.white,
             ),
-          ),
-          height: 100,
-          child: InkWell(
-            onTap: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (_) => const ExercisesPageContent(),
-                ),
-              );
-            },
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Ćwiczenia',
-                    style: GoogleFonts.robotoSlab(
-                      shadows: const <Shadow>[
-                        Shadow(
-                          offset: Offset(2, 2),
-                          blurRadius: 20.0,
-                          color: Color.fromARGB(255, 0, 0, 0),
-                        ),
-                      ],
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: const Color.fromARGB(255, 255, 255, 255),
-                    ),
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                image: DecorationImage(
+                  opacity: 0.9,
+                  image: AssetImage(
+                    (image[index]),
                   ),
-                ],
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class TitlePlans extends StatelessWidget {
-  const TitlePlans({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding:
-          const EdgeInsets.only(top: 20.0, bottom: 10.0, left: 25, right: 25),
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: Colors.white,
-        ),
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-            image: const DecorationImage(
-              opacity: 0.9,
-              image: AssetImage(
-                'images/plans.jpeg',
-              ),
-              fit: BoxFit.cover,
-            ),
-          ),
-          height: 100,
-          child: InkWell(
-            onTap: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (_) => const ExercisesPageContent(),
+                  fit: BoxFit.cover,
                 ),
-              );
-            },
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Twoje plany',
-                    style: GoogleFonts.robotoSlab(
-                      shadows: const <Shadow>[
-                        Shadow(
-                          offset: Offset(2, 2),
-                          blurRadius: 20.0,
-                          color: Color.fromARGB(255, 0, 0, 0),
-                        ),
-                      ],
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: const Color.fromARGB(255, 255, 255, 255),
+              ),
+              height: 100,
+              child: InkWell(
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) => (routes[index]),
                     ),
+                  );
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        result[index],
+                        style: GoogleFonts.robotoSlab(
+                          shadows: const <Shadow>[
+                            Shadow(
+                              offset: Offset(2, 2),
+                              blurRadius: 20.0,
+                              color: Color.fromARGB(255, 0, 0, 0),
+                            ),
+                          ],
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: const Color.fromARGB(255, 255, 255, 255),
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class TitleNewPlan extends StatelessWidget {
-  const TitleNewPlan({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding:
-          const EdgeInsets.only(top: 20.0, bottom: 10.0, left: 25, right: 25),
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: Colors.white,
-        ),
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-            image: const DecorationImage(
-              opacity: 0.9,
-              image: AssetImage(
-                'images/newplan.jpg',
-              ),
-              fit: BoxFit.cover,
-            ),
-          ),
-          height: 100,
-          child: InkWell(
-            onTap: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (_) => const ExercisesPageContent(),
                 ),
-              );
-            },
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Utwórz nowy plan',
-                    style: GoogleFonts.robotoSlab(
-                      shadows: const <Shadow>[
-                        Shadow(
-                          offset: Offset(2, 2),
-                          blurRadius: 20.0,
-                          color: Color.fromARGB(255, 0, 0, 0),
-                        ),
-                      ],
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: const Color.fromARGB(255, 255, 255, 255),
-                    ),
-                  ),
-                ],
               ),
             ),
           ),
-        ),
-      ),
-    );
-  }
+        );
+      });
 }
