@@ -120,6 +120,17 @@ Widget _myListView(BuildContext context) {
     ),
   ];
 
+  final image = [
+    'images/addexercises.jpg',
+    'images/exercises/back.jpg',
+    'images/exercises/bench.jpg',
+    'images/exercises/biceps.jpg',
+    'images/exercises/triceps.jpg',
+    'images/exercises/schoulders.jpg',
+    'images/exercises/legs.jpg',
+    'images/exercises/stomach.jpg',
+  ];
+
   return ListView.builder(
       itemCount: bodyParts.length,
       itemBuilder: (context, index) {
@@ -132,28 +143,57 @@ Widget _myListView(BuildContext context) {
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
-                  color: Colors.white.withOpacity(0.6),
+                  color: Colors.white.withOpacity(0.9),
                 ),
-                child: InkWell(
-                  onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (_) => (routes[index]),
+                height: 75,
+                child: Container(
+                  decoration: BoxDecoration(
+                    boxShadow: const <BoxShadow>[
+                      BoxShadow(
+                        color: Colors.black,
+                        blurRadius: 15,
                       ),
-                    );
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(bodyParts[index]),
-                          ],
+                    ],
+                    borderRadius: BorderRadius.circular(15),
+                    image: DecorationImage(
+                      opacity: 0.5,
+                      image: AssetImage(
+                        (image[index]),
+                      ),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) => (routes[index]),
                         ),
-                      ],
+                      );
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            bodyParts[index],
+                            style: GoogleFonts.robotoSlab(
+                              shadows: const <Shadow>[
+                                Shadow(
+                                  offset: Offset(2, 2),
+                                  blurRadius: 10.0,
+                                  color: Color.fromARGB(255, 0, 0, 0),
+                                ),
+                              ],
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold,
+                              color: const Color.fromARGB(255, 255, 255, 255),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),

@@ -77,29 +77,55 @@ class BodyPartPageContent extends StatelessWidget {
                             Container(
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(15),
-                                color: Colors.white.withOpacity(0.6),
+                                color: const Color.fromARGB(255, 255, 255, 255)
+                                    .withOpacity(0.9),
                               ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(document['exercises']),
-                                      ],
+                              child: Container(
+                                decoration: const BoxDecoration(
+                                  boxShadow: <BoxShadow>[
+                                    BoxShadow(
+                                      color: Colors.black,
+                                      blurRadius: 15,
                                     ),
-                                    ElevatedButton(
-                                        onPressed: () {
-                                          context
-                                              .read<ExercisesCubit>()
-                                              .delete(document: document.id);
-                                        },
-                                        child: const Icon(Icons.delete))
                                   ],
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                    left: 20.0,
+                                    right: 20,
+                                    top: 10,
+                                    bottom: 10,
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Flexible(
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              document['exercises'],
+                                              style: const TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 13,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      ElevatedButton(
+                                          onPressed: () {
+                                            context
+                                                .read<ExercisesCubit>()
+                                                .delete(document: document.id);
+                                          },
+                                          style: ElevatedButton.styleFrom(
+                                              primary: Colors.white),
+                                          child: const Icon(Icons.delete))
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),

@@ -16,7 +16,7 @@ class MyAcountPageContent extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
-          color: Colors.white.withOpacity(0),
+          color: const Color.fromARGB(255, 150, 150, 150).withOpacity(0.9),
         ),
         height: 150,
         margin: const EdgeInsets.all(50),
@@ -24,7 +24,7 @@ class MyAcountPageContent extends StatelessWidget {
           decoration: const BoxDecoration(
             boxShadow: <BoxShadow>[
               BoxShadow(
-                color: Color.fromARGB(255, 196, 196, 196),
+                color: Colors.white,
                 blurRadius: 15,
               ),
             ],
@@ -45,8 +45,7 @@ class MyAcountPageContent extends StatelessWidget {
                   onPressed: () {
                     context.read<RootCubit>().signOut();
                   },
-                  style: ElevatedButton.styleFrom(
-                      primary: const Color.fromARGB(255, 61, 61, 61)),
+                  style: ElevatedButton.styleFrom(primary: Colors.black),
                   child: const Text(
                     'Wyloguj',
                     style: TextStyle(color: Colors.white),
