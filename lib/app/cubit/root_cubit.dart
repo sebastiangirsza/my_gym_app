@@ -15,6 +15,13 @@ class RootCubit extends Cubit<RootState> {
             isLoading: false,
           ),
         );
+
+  StreamSubscription? _streamSubscription;
+
+  Future<void> signOut() async {
+    FirebaseAuth.instance.signOut();
+  }
+
   Future<void> logIn({required String email, required String password}) async {
     await FirebaseAuth.instance
         .createUserWithEmailAndPassword(email: email, password: password);
@@ -23,12 +30,6 @@ class RootCubit extends Cubit<RootState> {
   Future<void> signIn({required String email, required String password}) async {
     await FirebaseAuth.instance
         .signInWithEmailAndPassword(email: email, password: password);
-  }
-
-  StreamSubscription? _streamSubscription;
-
-  Future<void> signOut() async {
-    FirebaseAuth.instance.signOut();
   }
 
   Future<void> start() async {

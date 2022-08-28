@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:my_gym_app/app/appbar_wallpaper.dart';
 import 'package:my_gym_app/app/cubit/root_cubit.dart';
 import 'package:my_gym_app/app/features/home/home_page.dart';
 import 'package:my_gym_app/app/features/login/login_page.dart';
@@ -32,9 +33,9 @@ class RootPage extends StatelessWidget {
       child: BlocBuilder<RootCubit, RootState>(
         builder: (context, state) {
           if (state.errorMessage.isNotEmpty) {
-            return const Center(
+            return Center(
               child: Text(
-                'Zły login lub hasło',
+                'Something went wrong: ${state.errorMessage}',
               ),
             );
           }
@@ -45,7 +46,7 @@ class RootPage extends StatelessWidget {
           if (user == null) {
             return LoginPage();
           }
-          return HomePage();
+          return const AppBarWallpaper(page: HomePage());
         },
       ),
     );
