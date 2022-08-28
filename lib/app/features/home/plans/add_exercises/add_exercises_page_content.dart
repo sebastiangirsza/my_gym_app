@@ -26,7 +26,7 @@ class _AddExercisesPageContentState extends State<AddExercisesPageContent> {
           return Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                opacity: 0.35,
+                opacity: 0.3,
                 image: AssetImage(
                   'images/login_page_wallpaper.jpg',
                 ),
@@ -38,7 +38,7 @@ class _AddExercisesPageContentState extends State<AddExercisesPageContent> {
               appBar: AppBar(
                 shadowColor: Colors.white,
                 elevation: 10,
-                backgroundColor: Colors.white.withOpacity(0.6),
+                backgroundColor: Colors.white.withAlpha(60),
                 centerTitle: true,
                 shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
@@ -52,7 +52,7 @@ class _AddExercisesPageContentState extends State<AddExercisesPageContent> {
                     shadows: const <Shadow>[
                       Shadow(
                         offset: Offset(2, 2),
-                        blurRadius: 8.0,
+                        blurRadius: 20.0,
                         color: Colors.white,
                       ),
                     ],
