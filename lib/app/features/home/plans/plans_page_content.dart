@@ -28,7 +28,10 @@ Widget _myListView(BuildContext context) {
   ];
 
   final routes = [
-    const AppBarWallpaper(page: BodyPartsList()),
+    const AppBarWallpaper(
+      page: BodyPartsList(),
+      pageTitle: 'Ćwiczenia',
+    ),
     Container(),
     Container(),
   ];

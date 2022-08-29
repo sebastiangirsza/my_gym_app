@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_gym_app/app/appbar_wallpaper.dart';
 import 'package:my_gym_app/app/features/home/plans/add_exercises/add_exercises_page_content.dart';
+import 'package:my_gym_app/app/features/home/plans/exercises/body_part/body_part_page_content.dart';
 import 'package:my_gym_app/app/features/home/plans/exercises/cubit/exercises_cubit.dart';
-import 'package:my_gym_app/app/features/home/plans/exercises/exercises/body_part_page_content.dart';
 
 class BodyPartsList extends StatelessWidget {
   const BodyPartsList({
@@ -36,15 +36,38 @@ Widget _myListView(BuildContext context) {
     'Brzuch',
   ];
   final routes = [
-    const AppBarWallpaper(page: AddExercisesPageContent()),
-    const AppBarWallpaper(page: BodyPartPageContent(bodyParts: 'Plecy')),
     const AppBarWallpaper(
-        page: BodyPartPageContent(bodyParts: 'Klatka piersiowa')),
-    const AppBarWallpaper(page: BodyPartPageContent(bodyParts: 'Biceps')),
-    const AppBarWallpaper(page: BodyPartPageContent(bodyParts: 'Triceps')),
-    const AppBarWallpaper(page: BodyPartPageContent(bodyParts: 'Barki')),
-    const AppBarWallpaper(page: BodyPartPageContent(bodyParts: 'Nogi')),
-    const AppBarWallpaper(page: BodyPartPageContent(bodyParts: 'Brzuch')),
+      page: AddExercisesPageContent(),
+      pageTitle: 'Dodaj ćwiczenie',
+    ),
+    const AppBarWallpaper(
+      page: BodyPartPageContent(bodyParts: 'Plecy'),
+      pageTitle: 'Plecy',
+    ),
+    const AppBarWallpaper(
+      page: BodyPartPageContent(bodyParts: 'Klatka piersiowa'),
+      pageTitle: 'Klatka piersiowa',
+    ),
+    const AppBarWallpaper(
+      page: BodyPartPageContent(bodyParts: 'Biceps'),
+      pageTitle: 'Biceps',
+    ),
+    const AppBarWallpaper(
+      page: BodyPartPageContent(bodyParts: 'Triceps'),
+      pageTitle: 'Triceps',
+    ),
+    const AppBarWallpaper(
+      page: BodyPartPageContent(bodyParts: 'Barki'),
+      pageTitle: 'Barki',
+    ),
+    const AppBarWallpaper(
+      page: BodyPartPageContent(bodyParts: 'Nogi'),
+      pageTitle: 'Nogi',
+    ),
+    const AppBarWallpaper(
+      page: BodyPartPageContent(bodyParts: 'Brzuch'),
+      pageTitle: 'Brzuch',
+    ),
   ];
 
   final image = [

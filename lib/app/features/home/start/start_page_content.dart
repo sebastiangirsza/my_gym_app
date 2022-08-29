@@ -24,15 +24,24 @@ Widget _myListView(BuildContext context) {
   ];
 
   final image = [
-    'images/exercises.jpg',
-    'images/plans.jpeg',
-    'images/newplan.jpg',
+    'images/login_page_wallpaper_new.jpg',
+    'images/login_page_wallpaper_new.jpg',
+    'images/login_page_wallpaper_new.jpg',
   ];
 
   final routes = [
-    const AppBarWallpaper(page: YourMeasurementsPageContent()),
-    const AppBarWallpaper(page: CalculatorPageContent()),
-    const AppBarWallpaper(page: CalendarPageContent()),
+    const AppBarWallpaper(
+      page: YourMeasurementsPageContent(),
+      pageTitle: 'Twoje pomiary',
+    ),
+    const AppBarWallpaper(
+      page: CalculatorPageContent(),
+      pageTitle: 'Kalkulator zapotrzebowania',
+    ),
+    const AppBarWallpaper(
+      page: CalendarPageContent(),
+      pageTitle: 'Kalendarz',
+    ),
   ];
   return ListView.builder(
       itemCount: result.length,

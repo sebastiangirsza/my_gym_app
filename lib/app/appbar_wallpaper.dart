@@ -6,9 +6,11 @@ import 'package:my_gym_app/app/cubit/root_cubit.dart';
 class AppBarWallpaper extends StatelessWidget {
   const AppBarWallpaper({
     required this.page,
+    required this.pageTitle,
     Key? key,
   }) : super(key: key);
   final page;
+  final pageTitle;
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -49,7 +51,7 @@ class AppBarWallpaper extends StatelessWidget {
                   ),
                 ),
                 title: Text(
-                  'My Gym App',
+                  pageTitle,
                   style: GoogleFonts.robotoSlab(
                     shadows: const <Shadow>[
                       Shadow(

@@ -46,7 +46,10 @@ class RootPage extends StatelessWidget {
           if (user == null) {
             return LoginPage();
           }
-          return const AppBarWallpaper(page: HomePage());
+          return const AppBarWallpaper(
+            page: HomePage(),
+            pageTitle: 'My Gym App',
+          );
         },
       ),
     );
