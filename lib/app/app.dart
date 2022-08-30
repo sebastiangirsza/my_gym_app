@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_gym_app/app/appbar_wallpaper.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:my_gym_app/app/cubit/root_cubit.dart';
-import 'package:my_gym_app/app/features/home/home_page.dart';
-import 'package:my_gym_app/app/features/login/login_page.dart';
+import 'package:my_gym_app/app/home/home_page.dart';
+import 'package:my_gym_app/app/login/login_page.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -11,11 +11,21 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      title: 'My GYM App',
       theme: ThemeData(
-        primarySwatch: Colors.grey,
-        canvasColor: Colors.white.withOpacity(0.6),
-      ),
+          primarySwatch: Colors.grey,
+          // canvasColor: Colors.white.withOpacity(0.6),
+          brightness: Brightness.dark,
+          textTheme: TextTheme(
+              bodyText1: GoogleFonts.robotoSlab(
+                  color: Colors.white,
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold),
+              button: GoogleFonts.robotoSlab(
+                  color: Colors.black,
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold))),
       home: const RootPage(),
     );
   }
@@ -46,10 +56,7 @@ class RootPage extends StatelessWidget {
           if (user == null) {
             return LoginPage();
           }
-          return const AppBarWallpaper(
-            page: HomePage(),
-            pageTitle: 'My Gym App',
-          );
+          return const HomePage();
         },
       ),
     );
