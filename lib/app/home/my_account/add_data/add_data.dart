@@ -1,9 +1,10 @@
 import 'package:dob_input_field/dob_input_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:my_gym_app/app/home/my_account/add_data/cubit/add_data_cubit.dart';
 
-import 'package:my_gym_app/app/home/my_account/data/cubit/data_cubit.dart';
 import 'package:my_gym_app/app/home/my_account/my_account_page_content.dart';
 
 class DataPageContent extends StatefulWidget {
@@ -23,7 +24,7 @@ class _DataPageContentState extends State<DataPageContent> {
   TextEditingController dateInput = TextEditingController();
   @override
   void initState() {
-    dateInput.text = ""; //set the initial value of text field
+    dateInput.text = "";
     super.initState();
   }
 
@@ -112,6 +113,10 @@ class _DataPageContentState extends State<DataPageContent> {
                                           .textTheme
                                           .bodyText1),
                                   TextField(
+                                    keyboardType: TextInputType.number,
+                                    inputFormatters: [
+                                      FilteringTextInputFormatter.digitsOnly
+                                    ],
                                     textAlign: TextAlign.center,
                                     style:
                                         Theme.of(context).textTheme.bodyText1,

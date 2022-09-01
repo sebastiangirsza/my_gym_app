@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_gym_app/app/cubit/root_cubit.dart';
-import 'package:my_gym_app/app/home/my_account/data/cubit/data_cubit.dart';
-import 'package:my_gym_app/app/home/my_account/data/data.dart';
+import 'package:my_gym_app/app/home/my_account/your_data_widget/your_data_widget.dart';
 
 class MyAcountPageContent extends StatelessWidget {
   MyAcountPageContent({
@@ -55,90 +54,7 @@ class MyAcountPageContent extends StatelessWidget {
             ),
             body: ListView(
               children: [
-                Center(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      color: Colors.grey[800],
-                    ),
-                    margin: const EdgeInsets.only(right: 25, left: 25),
-                    height: 250,
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                          top: 15.0, bottom: 15, right: 25, left: 25),
-                      child: Column(
-                        children: [
-                          Text('Twoje dane',
-                              style: Theme.of(context).textTheme.bodyText1),
-                          const SizedBox(height: 20),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Text('Imię i nazwisko',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyText1),
-                                  const SizedBox(height: 20),
-                                  Text('Data urodzenia',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyText1),
-                                  const SizedBox(height: 20),
-                                  Text('Wzrost',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyText1),
-                                  const SizedBox(height: 20),
-                                ],
-                              ),
-                              BlocProvider(
-                                  create: (context) => DataCubit()..start(),
-                                  child: BlocBuilder<DataCubit, DataState>(
-                                      builder: (context, state) {
-                                    final documents = state.documents;
-                                    return Column(
-                                      children: [
-                                        for (final document in documents) ...[
-                                          Text(document['your_name'],
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodyText1),
-                                          const SizedBox(height: 20),
-                                          Text(document['your_date'],
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodyText1),
-                                          const SizedBox(height: 20),
-                                          Text('${document['your_height']} cm',
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodyText1),
-                                          const SizedBox(height: 20),
-                                        ],
-                                      ],
-                                    );
-                                  }))
-                            ],
-                          ),
-                          ElevatedButton(
-                              onPressed: () {
-                                Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                    builder: (_) => const DataPageContent(),
-                                  ),
-                                );
-                              },
-                              style: ElevatedButton.styleFrom(
-                                  primary: Colors.white),
-                              child: const Text('Edytuj')),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
+                YourDataWidget(),
                 const SizedBox(
                   height: 25,
                 ),

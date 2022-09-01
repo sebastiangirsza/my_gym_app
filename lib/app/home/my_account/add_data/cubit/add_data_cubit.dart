@@ -4,7 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:meta/meta.dart';
 
-part 'data_state.dart';
+part 'add_data_state.dart';
 
 class DataCubit extends Cubit<DataState> {
   DataCubit()
