@@ -47,20 +47,20 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ],
               ),
-              // body: Builder(
-              //   builder: (context) {
-              //     if (currentIndex == 0) {
-              //       return const StartPageContent();
-              //     }
-              //     if (currentIndex == 1) {
-              //       return const PlansPageContent();
-              //     }
-              //     if (currentIndex == 2) {
-              //       return const PlansPageContent();
-              //     }
-              //     return MyAcountPageContent(email: state.user?.email);
-              //   },
-              // ),
+              body: Builder(
+                builder: (context) {
+                  if (currentIndex == 0) {
+                    return const StartPageContent();
+                  }
+                  if (currentIndex == 1) {
+                    return const PlansPageContent();
+                  }
+                  if (currentIndex == 2) {
+                    return const PlansPageContent();
+                  }
+                  return const PlansPageContent();
+                },
+              ),
               bottomNavigationBar: Container(
                 color: Colors.white,
                 child: BottomNavigationBar(

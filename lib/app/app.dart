@@ -18,14 +18,11 @@ class MyApp extends StatelessWidget {
           // canvasColor: Colors.white.withOpacity(0.6),
           brightness: Brightness.dark,
           textTheme: TextTheme(
-              bodyText1: GoogleFonts.robotoSlab(
-                  color: Colors.white,
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold),
-              button: GoogleFonts.robotoSlab(
-                  color: Colors.black,
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold))),
+            bodyText1: GoogleFonts.robotoSlab(
+                color: Colors.white, fontSize: 15, fontWeight: FontWeight.bold),
+            button: GoogleFonts.robotoSlab(
+                color: Colors.black, fontSize: 15, fontWeight: FontWeight.bold),
+          )),
       home: const RootPage(),
     );
   }
