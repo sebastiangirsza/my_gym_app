@@ -15,7 +15,6 @@ class DataCubit extends Cubit<DataState> {
   Future<void> addData({
     required String yourName,
     required String yourDate,
-    required String yourWeight,
     required String yourHeight,
     required String date,
   }) async {
@@ -23,7 +22,6 @@ class DataCubit extends Cubit<DataState> {
       'date': date,
       'your_name': yourName,
       'your_date': yourDate,
-      'your_weight': yourWeight,
       'your_height': yourHeight,
     });
   }

@@ -1,5 +1,7 @@
+import 'package:dob_input_field/dob_input_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 
 import 'package:my_gym_app/app/home/my_account/data/cubit/data_cubit.dart';
 import 'package:my_gym_app/app/home/my_account/my_account_page_content.dart';
@@ -16,9 +18,15 @@ class DataPageContent extends StatefulWidget {
 class _DataPageContentState extends State<DataPageContent> {
   var yourName = '';
   var yourDate = '';
-  var yourWeight = '';
   var yourHeight = '';
   var date = DateTime.now();
+  TextEditingController dateInput = TextEditingController();
+  @override
+  void initState() {
+    dateInput.text = ""; //set the initial value of text field
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -33,7 +41,7 @@ class _DataPageContentState extends State<DataPageContent> {
                   color: Colors.grey[800],
                 ),
                 margin: const EdgeInsets.only(right: 25, left: 25),
-                height: 500,
+                height: 600,
                 child: Padding(
                   padding: const EdgeInsets.only(
                       top: 15.0, bottom: 15, right: 25, left: 25),
@@ -73,34 +81,29 @@ class _DataPageContentState extends State<DataPageContent> {
                                           .textTheme
                                           .bodyText1),
                                   TextField(
-                                    textAlign: TextAlign.center,
-                                    style:
-                                        Theme.of(context).textTheme.bodyText1,
+                                    controller: dateInput,
                                     decoration: const InputDecoration(
-                                      hintText: '',
+                                      icon: Icon(Icons.calendar_month),
                                     ),
-                                    onChanged: (newDate) {
-                                      setState(() {
-                                        yourDate = newDate;
-                                      });
-                                    },
-                                  ),
-                                  const SizedBox(height: 20),
-                                  Text('Waga',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyText1),
-                                  TextField(
-                                    textAlign: TextAlign.center,
-                                    style:
-                                        Theme.of(context).textTheme.bodyText1,
-                                    decoration: const InputDecoration(
-                                      hintText: '',
-                                    ),
-                                    onChanged: (newWeight) {
-                                      setState(() {
-                                        yourWeight = newWeight;
-                                      });
+                                    readOnly: true,
+                                    onTap: () async {
+                                      DateTime? pickedDate =
+                                          await showDatePicker(
+                                              context: context,
+                                              initialDate: DateTime.now(),
+                                              firstDate: DateTime(1900),
+                                              lastDate: DateTime.now());
+
+                                      if (pickedDate != null) {
+                                        print(pickedDate);
+                                        String formattedDate =
+                                            DateFormat('yyyy-MM-dd')
+                                                .format(pickedDate);
+                                        print(formattedDate);
+                                        setState(() {
+                                          dateInput.text = formattedDate;
+                                        });
+                                      } else {}
                                     },
                                   ),
                                   const SizedBox(height: 20),
@@ -129,15 +132,13 @@ class _DataPageContentState extends State<DataPageContent> {
                       ),
                       ElevatedButton(
                         onPressed: yourName.isEmpty ||
-                                yourDate.isEmpty ||
-                                yourHeight.isEmpty ||
-                                yourWeight.isEmpty
+                                dateInput.text.isEmpty ||
+                                yourHeight.isEmpty
                             ? null
                             : () {
                                 context.read<DataCubit>().addData(
                                     yourName: yourName,
-                                    yourDate: yourDate,
-                                    yourWeight: yourWeight,
+                                    yourDate: dateInput.text,
                                     yourHeight: yourHeight,
                                     date: date.toString());
                                 Navigator.of(context).pop();

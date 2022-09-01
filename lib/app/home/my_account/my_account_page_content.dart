@@ -62,7 +62,7 @@ class MyAcountPageContent extends StatelessWidget {
                       color: Colors.grey[800],
                     ),
                     margin: const EdgeInsets.only(right: 25, left: 25),
-                    height: 300,
+                    height: 250,
                     child: Padding(
                       padding: const EdgeInsets.only(
                           top: 15.0, bottom: 15, right: 25, left: 25),
@@ -83,11 +83,6 @@ class MyAcountPageContent extends StatelessWidget {
                                           .bodyText1),
                                   const SizedBox(height: 20),
                                   Text('Data urodzenia',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyText1),
-                                  const SizedBox(height: 20),
-                                  Text('Waga',
                                       style: Theme.of(context)
                                           .textTheme
                                           .bodyText1),
@@ -117,12 +112,7 @@ class MyAcountPageContent extends StatelessWidget {
                                                   .textTheme
                                                   .bodyText1),
                                           const SizedBox(height: 20),
-                                          Text(document['your_weight'],
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodyText1),
-                                          const SizedBox(height: 20),
-                                          Text(document['your_height'],
+                                          Text('${document['your_height']} cm',
                                               style: Theme.of(context)
                                                   .textTheme
                                                   .bodyText1),
