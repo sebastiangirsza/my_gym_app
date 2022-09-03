@@ -24,6 +24,7 @@ class DataCubit extends Cubit<DataState> {
       'your_date': yourDate,
       'your_height': yourHeight,
     });
+    emit(const DataState(saved: true, documents: []));
   }
 
   StreamSubscription? _streamSubscription;

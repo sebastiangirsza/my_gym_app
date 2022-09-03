@@ -29,6 +29,13 @@
             {
               "client_id": "365389726348-t05djo0le3hhnl0qnacautj3tbuoakf2.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "365389726348-u19mu51juja8074oseecj0e69bcae5bf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.sebastiangirsza.myGymApp"
+              }
             }
           ]
         }
