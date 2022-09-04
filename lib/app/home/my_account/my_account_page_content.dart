@@ -25,27 +25,6 @@ class MyAcountPageContent extends StatelessWidget {
         },
         child: BlocBuilder<RootCubit, RootState>(
           builder: (context, state) {
-            final bodyParts = [
-              'Szyja/kark',
-              'Klatka piersiowa',
-              'Ramię/biceps',
-              'Przedramię',
-              'Talia',
-              'Brzuch/pas',
-              'Biodra',
-              'Udo',
-            ];
-            final pomiary = [
-              '30cm',
-              '30cm',
-              '30cm',
-              '30cm',
-              '30cm',
-              '30cm',
-              '30cm',
-              '30cm',
-            ];
-
             if (state.errorMessage.isNotEmpty) {
               return Center(
                   child: Text('Something went wrong: ${state.errorMessage}'));
@@ -53,24 +32,32 @@ class MyAcountPageContent extends StatelessWidget {
             if (state.isLoading) {
               return const Center(child: CircularProgressIndicator());
             }
-            return Scaffold(
-              backgroundColor: Colors.grey[900],
-              appBar: AppBar(
-                backgroundColor: Colors.transparent,
-                elevation: 0,
+            return Container(
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  opacity: 0.3,
+                  image: AssetImage(
+                    'images/login_page_wallpaper.jpg',
+                  ),
+                  fit: BoxFit.cover,
+                ),
               ),
-              body: ListView(
-                children: [
-                  const YourDataWidget(),
-                  const SizedBox(
-                    height: 25,
-                  ),
-                  MyMeasurementsWidget(bodyParts: bodyParts, pomiary: pomiary),
-                  const SizedBox(
-                    height: 25,
-                  ),
-                  SignOutWidget(email: email),
-                ],
+              child: Scaffold(
+                backgroundColor: Colors.transparent,
+                appBar: AppBar(
+                  backgroundColor: Colors.transparent,
+                  elevation: 0,
+                ),
+                body: ListView(
+                  children: [
+                    const YourDataWidget(),
+                    const SizedBox(height: 25),
+                    MyMeasurementsWidget(),
+                    const SizedBox(height: 25),
+                    SignOutWidget(email: email),
+                    const SizedBox(height: 25),
+                  ],
+                ),
               ),
             );
           },

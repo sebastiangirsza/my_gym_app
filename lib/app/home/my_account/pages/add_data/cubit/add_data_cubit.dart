@@ -18,7 +18,11 @@ class DataCubit extends Cubit<DataState> {
     required String yourHeight,
     required String date,
   }) async {
-    await FirebaseFirestore.instance.collection('yourData').add({
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc('2EjvkciByydb4p3qZ93fJi03JHj2')
+        .collection('yourData')
+        .add({
       'date': date,
       'your_name': yourName,
       'your_date': yourDate,
@@ -37,6 +41,8 @@ class DataCubit extends Cubit<DataState> {
     );
 
     _streamSubscription = FirebaseFirestore.instance
+        .collection('users')
+        .doc('2EjvkciByydb4p3qZ93fJi03JHj2')
         .collection('yourData')
         .orderBy('date', descending: true)
         .limit(1)

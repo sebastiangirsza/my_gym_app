@@ -18,21 +18,44 @@ class YourDataWidget extends StatelessWidget {
           color: Colors.grey[800],
         ),
         margin: const EdgeInsets.only(right: 25, left: 25),
-        height: 250,
-        child: Padding(
-          padding:
-              const EdgeInsets.only(top: 15.0, bottom: 15, right: 25, left: 25),
-          child: Column(
-            children: [
-              Text(
-                'Twoje dane',
-                style: GoogleFonts.robotoSlab(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold),
+        height: 220,
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(
+                top: 10.0,
               ),
-              const SizedBox(height: 20),
-              Row(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 55.0),
+                    child: Text(
+                      'Twoje dane',
+                      style: GoogleFonts.robotoSlab(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  IconButton(
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (_) => const DataPageContent(),
+                            fullscreenDialog: true,
+                            // Dodaje X w lewym górnym rogu
+                          ),
+                        );
+                      },
+                      icon: const Icon(Icons.edit)),
+                ],
+              ),
+            ),
+            const SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 15, right: 25, left: 25),
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
@@ -72,20 +95,8 @@ class YourDataWidget extends StatelessWidget {
                       }))
                 ],
               ),
-              ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (_) => const DataPageContent(),
-                        fullscreenDialog: true,
-                        // Dodaje X w lewym górnym rogu
-                      ),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(primary: Colors.white),
-                  child: const Text('Edytuj')),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

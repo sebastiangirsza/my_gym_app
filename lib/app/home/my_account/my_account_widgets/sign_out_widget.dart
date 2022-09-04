@@ -21,39 +21,57 @@ class SignOutWidget extends StatelessWidget {
         ),
         margin: const EdgeInsets.only(right: 25, left: 25),
         height: 150,
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Column(
-                children: [
-                  Text(
-                    'Jestes zalogowany jako',
-                    style: GoogleFonts.robotoSlab(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    '$email',
-                    style: GoogleFonts.robotoSlab(
-                      color: Colors.white,
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                      decoration: TextDecoration.underline,
-                    ),
-                  ),
-                ],
+        child: Container(
+          decoration: BoxDecoration(
+            boxShadow: const <BoxShadow>[
+              BoxShadow(
+                color: Colors.black,
+                blurRadius: 15,
               ),
-              const SizedBox(height: 20),
-              ElevatedButton(
-                  onPressed: () {
-                    context.read<RootCubit>().signOut();
-                  },
-                  style:
-                      ElevatedButton.styleFrom(backgroundColor: Colors.white),
-                  child: const Text('Wyloguj')),
             ],
+            borderRadius: BorderRadius.circular(15),
+            image: const DecorationImage(
+              opacity: 0.5,
+              image: AssetImage(
+                'images/addexercises.jpg',
+              ),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Column(
+                  children: [
+                    Text(
+                      'Jestes zalogowany jako',
+                      style: GoogleFonts.robotoSlab(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      '$email',
+                      style: GoogleFonts.robotoSlab(
+                        color: Colors.white,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 20),
+                ElevatedButton(
+                    onPressed: () {
+                      context.read<RootCubit>().signOut();
+                    },
+                    style:
+                        ElevatedButton.styleFrom(backgroundColor: Colors.white),
+                    child: const Text('Wyloguj')),
+              ],
+            ),
           ),
         ),
       ),
