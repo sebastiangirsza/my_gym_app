@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_gym_app/app/home/my_account/add_data/add_data.dart';
-import 'package:my_gym_app/app/home/my_account/add_data/cubit/add_data_cubit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:my_gym_app/app/home/my_account/pages/add_data/add_data.dart';
+import 'package:my_gym_app/app/home/my_account/pages/add_data/cubit/add_data_cubit.dart';
 
 class YourDataWidget extends StatelessWidget {
   const YourDataWidget({
@@ -23,7 +24,13 @@ class YourDataWidget extends StatelessWidget {
               const EdgeInsets.only(top: 15.0, bottom: 15, right: 25, left: 25),
           child: Column(
             children: [
-              Text('Twoje dane', style: Theme.of(context).textTheme.bodyText1),
+              Text(
+                'Twoje dane',
+                style: GoogleFonts.robotoSlab(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold),
+              ),
               const SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -70,6 +77,8 @@ class YourDataWidget extends StatelessWidget {
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (_) => const DataPageContent(),
+                        fullscreenDialog: true,
+                        // Dodaje X w lewym górnym rogu
                       ),
                     );
                   },
