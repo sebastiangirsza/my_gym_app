@@ -83,7 +83,7 @@ class YourDataWidget extends StatelessWidget {
                               Text(dataModel.name,
                                   style: Theme.of(context).textTheme.bodyText1),
                               const SizedBox(height: 20),
-                              Text(dataModel.date.toString(),
+                              Text(dataModel.dateFormatted(),
                                   style: Theme.of(context).textTheme.bodyText1),
                               const SizedBox(height: 20),
                               Text('${dataModel.height.toString()} cm',
