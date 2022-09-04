@@ -2,11 +2,11 @@ part of 'add_data_cubit.dart';
 
 @immutable
 class DataState {
-  final List<QueryDocumentSnapshot<Map<String, dynamic>>> documents;
+  final List<DataModel> documents;
   final bool saved;
 
   const DataState({
-    required this.documents,
+    this.documents = const [],
     this.saved = false,
   });
 }

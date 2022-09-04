@@ -76,17 +76,17 @@ class YourDataWidget extends StatelessWidget {
                       create: (context) => DataCubit()..start(),
                       child: BlocBuilder<DataCubit, DataState>(
                           builder: (context, state) {
-                        final documents = state.documents;
+                        final dataModels = state.documents;
                         return Column(
                           children: [
-                            for (final document in documents) ...[
-                              Text(document['your_name'],
+                            for (final dataModel in dataModels) ...[
+                              Text(dataModel.name,
                                   style: Theme.of(context).textTheme.bodyText1),
                               const SizedBox(height: 20),
-                              Text(document['your_date'],
+                              Text(dataModel.date.toString(),
                                   style: Theme.of(context).textTheme.bodyText1),
                               const SizedBox(height: 20),
-                              Text('${document['your_height']} cm',
+                              Text('${dataModel.height.toString()} cm',
                                   style: Theme.of(context).textTheme.bodyText1),
                               const SizedBox(height: 20),
                             ],

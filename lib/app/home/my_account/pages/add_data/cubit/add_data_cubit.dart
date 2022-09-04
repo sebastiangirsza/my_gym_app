@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:meta/meta.dart';
+import 'package:my_gym_app/models/data_model.dart';
 
 part 'add_data_state.dart';
 
@@ -48,9 +49,17 @@ class DataCubit extends Cubit<DataState> {
         .limit(1)
         .snapshots()
         .listen((data) {
+      final dataModels = data.docs.map((doc) {
+        return DataModel(
+          name: doc['your_name'],
+          date: (doc['your_date'] as Timestamp).toDate(),
+          height: doc['your_height'],
+          saveDate: (doc['date'] as Timestamp).toDate(),
+        );
+      }).toList();
       emit(
         DataState(
-          documents: data.docs,
+          documents: dataModels,
         ),
       );
     })
