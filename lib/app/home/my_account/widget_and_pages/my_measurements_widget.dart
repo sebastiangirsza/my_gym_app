@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:my_gym_app/app/cubit/root_cubit.dart';
-import 'package:my_gym_app/app/home/my_account/my_account_page_content.dart';
-import 'package:my_gym_app/app/home/my_account/pages/add_data/add_data.dart';
-import 'package:my_gym_app/app/home/my_account/pages/my_measurements/cubit/my_measurements_cubit.dart';
-import 'package:my_gym_app/app/home/my_account/pages/my_measurements/my_measurements.dart';
+import 'package:my_gym_app/app/home/my_account/widget_and_pages/my_measurements/cubit/my_measurements_cubit.dart';
+import 'package:my_gym_app/app/home/my_account/widget_and_pages/my_measurements/my_measurements.dart';
 
 class MyMeasurementsWidget extends StatelessWidget {
   MyMeasurementsWidget({

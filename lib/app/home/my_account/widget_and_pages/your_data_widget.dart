@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:my_gym_app/app/home/my_account/pages/add_data/add_data.dart';
-import 'package:my_gym_app/app/home/my_account/pages/add_data/cubit/add_data_cubit.dart';
+import 'package:my_gym_app/app/home/my_account/widget_and_pages/your_data/cubit/your_data_cubit.dart';
+import 'package:my_gym_app/app/home/my_account/widget_and_pages/your_data/your_data.dart';
 
 class YourDataWidget extends StatelessWidget {
   const YourDataWidget({

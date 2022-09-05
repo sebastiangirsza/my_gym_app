@@ -5,7 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:meta/meta.dart';
 import 'package:my_gym_app/models/data_model.dart';
 
-part 'add_data_state.dart';
+part 'your_data_state.dart';
 
 class DataCubit extends Cubit<DataState> {
   DataCubit()

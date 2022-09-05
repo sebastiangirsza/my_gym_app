@@ -1,4 +1,4 @@
-part of 'add_data_cubit.dart';
+part of 'your_data_cubit.dart';
 
 @immutable
 class DataState {

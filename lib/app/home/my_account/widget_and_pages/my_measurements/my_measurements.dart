@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:intl/intl.dart';
-import 'package:my_gym_app/app/home/my_account/pages/add_data/cubit/add_data_cubit.dart';
-import 'package:my_gym_app/app/home/my_account/pages/my_measurements/cubit/my_measurements_cubit.dart';
+import 'package:my_gym_app/app/home/my_account/widget_and_pages/my_measurements/cubit/my_measurements_cubit.dart';
 
 class MyMeasurementsPageContent extends StatefulWidget {
   const MyMeasurementsPageContent({
@@ -28,12 +26,6 @@ class _MyMeasurementsPageContentState extends State<MyMeasurementsPageContent> {
   var thigh = '';
   var calf = '';
 
-  // TextEditingController dateInput = TextEditingController();
-  // @override
-  // void initState() {
-  //   dateInput.text = "";
-  //   super.initState();
-  // }
   final bodyParts = [
     'Szyja/kark',
     'Klatka piersiowa',
