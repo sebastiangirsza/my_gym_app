@@ -1,80 +1,79 @@
 import 'dart:async';
-
 import 'package:bloc/bloc.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:meta/meta.dart';
-import 'package:my_gym_app/models/data_model.dart';
+import 'package:my_gym_app/repositories/data_repository.dart';
 
 part 'your_data_state.dart';
 
 class DataCubit extends Cubit<DataState> {
-  DataCubit()
-      : super(const DataState(
-          documents: [],
-        ));
+  DataCubit(this._dataRepository) : super(const DataState());
 
-  Future<void> addData({
-    required String yourName,
-    required String yourDate,
-    required String yourHeight,
-    required String date,
-  }) async {
-    await FirebaseFirestore.instance
-        .collection('users')
-        .doc('2EjvkciByydb4p3qZ93fJi03JHj2')
-        .collection('yourData')
-        .add({
-      'date': date,
-      'your_name': yourName,
-      'your_date': yourDate,
-      'your_height': yourHeight,
-    });
-    emit(const DataState(saved: true, documents: []));
+  final DataRepository _dataRepository;
+
+  Future<void> addData(
+    String yourName,
+    DateTime yourDate,
+    String yourHeight,
+    DateTime date,
+  ) async {
+    await _dataRepository.addData(yourName, yourDate, yourHeight, date);
+    emit(const DataState(saved: true));
   }
 
-  StreamSubscription? _streamSubscription;
+// FirebaseFirestore.instance
+//         .collection('users')
+//         .doc('2EjvkciByydb4p3qZ93fJi03JHj2')
+//         .collection('yourData')
+//         .add({
+//       'date': date,
+//       'your_name': yourName,
+//       'your_date': yourDate,
+//       'your_height': yourHeight,
+//     });
 
-  Future<void> start() async {
-    emit(
-      const DataState(
-        documents: [],
-      ),
-    );
+  // StreamSubscription? _streamSubscription;
 
-    _streamSubscription = FirebaseFirestore.instance
-        .collection('users')
-        .doc('2EjvkciByydb4p3qZ93fJi03JHj2')
-        .collection('yourData')
-        .orderBy('date', descending: true)
-        .limit(1)
-        .snapshots()
-        .listen((data) {
-      final dataModels = data.docs.map((doc) {
-        return DataModel(
-          name: doc['your_name'],
-          date: (doc['your_date'] as Timestamp).toDate(),
-          height: doc['your_height'],
-          saveDate: (doc['date'] as Timestamp).toDate(),
-        );
-      }).toList();
-      emit(
-        DataState(
-          documents: dataModels,
-        ),
-      );
-    })
-      ..onError((error) {
-        emit(
-          const DataState(
-            documents: [],
-          ),
-        );
-      });
-  }
+  // Future<void> start() async {
+  //   emit(
+  //     const DataState(
+  //       documents: [],
+  //     ),
+  //   );
 
-  @override
-  Future<void> close() {
-    _streamSubscription?.cancel();
-    return super.close();
-  }
+  //   _streamSubscription = FirebaseFirestore.instance
+  //       .collection('users')
+  //       .doc('2EjvkciByydb4p3qZ93fJi03JHj2')
+  //       .collection('yourData')
+  //       .orderBy('date', descending: true)
+  //       .limit(1)
+  //       .snapshots()
+  //       .listen((data) {
+  //     final dataModels = data.docs.map((doc) {
+  //       return DataModel(
+  //         yourName: doc['your_name'],
+  //         yourDate: doc['your_date'],
+  //         yourHeight: doc['your_height'],
+  //         date: doc['date'],
+  //       );
+  //     }).toList();
+  //     emit(
+  //       DataState(
+  //         documents: dataModels,
+  //       ),
+  //     );
+  //   })
+  //     ..onError((error) {
+  //       emit(
+  //         const DataState(
+  //           documents: [],
+  //         ),
+  //       );
+  //     });
+  // }
+
+  // @override
+  // Future<void> close() {
+  //   _streamSubscription?.cancel();
+  //   return super.close();
+  // }
 }

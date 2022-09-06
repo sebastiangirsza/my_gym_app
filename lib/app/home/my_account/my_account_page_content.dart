@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_gym_app/app/cubit/root_cubit.dart';
-import 'package:my_gym_app/app/home/my_account/widget_and_pages/my_measurements_widget.dart';
 import 'package:my_gym_app/app/home/my_account/widget_and_pages/sign_out_widget.dart';
 import 'package:my_gym_app/app/home/my_account/widget_and_pages/your_data_widget.dart';
 
@@ -51,8 +50,6 @@ class MyAcountPageContent extends StatelessWidget {
                 body: ListView(
                   children: [
                     const YourDataWidget(),
-                    const SizedBox(height: 25),
-                    MyMeasurementsWidget(),
                     const SizedBox(height: 25),
                     SignOutWidget(email: email),
                     const SizedBox(height: 25),

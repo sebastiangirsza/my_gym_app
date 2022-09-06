@@ -30,13 +30,6 @@ class SignOutWidget extends StatelessWidget {
               ),
             ],
             borderRadius: BorderRadius.circular(15),
-            image: const DecorationImage(
-              opacity: 0.5,
-              image: AssetImage(
-                'images/addexercises.jpg',
-              ),
-              fit: BoxFit.cover,
-            ),
           ),
           child: Center(
             child: Column(
@@ -45,7 +38,7 @@ class SignOutWidget extends StatelessWidget {
                 Column(
                   children: [
                     Text(
-                      'Jestes zalogowany jako',
+                      'Jesteś zalogowany jako',
                       style: GoogleFonts.robotoSlab(
                           color: Colors.white,
                           fontSize: 18,

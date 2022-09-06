@@ -2,18 +2,18 @@ import 'package:intl/intl.dart';
 
 class DataModel {
   DataModel({
-    required this.name,
+    required this.yourName,
+    required this.yourDate,
+    required this.yourHeight,
     required this.date,
-    required this.height,
-    required this.saveDate,
   });
 
-  final String name;
+  final String yourName;
+  final DateTime yourDate;
+  final String yourHeight;
   final DateTime date;
-  final int height;
-  final DateTime saveDate;
 
   String dateFormatted() {
-    return DateFormat('dd/MM/yyyy').format(date);
+    return DateFormat('dd/MM/yyyy').format(yourDate);
   }
 }

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:my_gym_app/app/home/my_account/widget_and_pages/your_data/cubit/your_data_cubit.dart';
+import 'package:my_gym_app/app/home/my_account/cubit/my_account_cubit.dart';
 import 'package:my_gym_app/app/home/my_account/widget_and_pages/your_data/your_data.dart';
+import 'package:my_gym_app/repositories/data_repository.dart';
 
 class YourDataWidget extends StatelessWidget {
   const YourDataWidget({
@@ -73,20 +74,21 @@ class YourDataWidget extends StatelessWidget {
                     ],
                   ),
                   BlocProvider(
-                      create: (context) => DataCubit()..start(),
-                      child: BlocBuilder<DataCubit, DataState>(
+                      create: (context) =>
+                          MyAccountCubit(DataRepository())..start(),
+                      child: BlocBuilder<MyAccountCubit, MyAccountState>(
                           builder: (context, state) {
-                        final dataModels = state.documents;
+                        final dataModels = state.data;
                         return Column(
                           children: [
                             for (final dataModel in dataModels) ...[
-                              Text(dataModel.name,
+                              Text(dataModel.yourName,
                                   style: Theme.of(context).textTheme.bodyText1),
                               const SizedBox(height: 20),
                               Text(dataModel.dateFormatted(),
                                   style: Theme.of(context).textTheme.bodyText1),
                               const SizedBox(height: 20),
-                              Text('${dataModel.height.toString()} cm',
+                              Text('${dataModel.yourHeight} cm',
                                   style: Theme.of(context).textTheme.bodyText1),
                               const SizedBox(height: 20),
                             ],
